@@ -1,0 +1,47 @@
+{
+	  "log": {
+  		"loglevel": "warning"
+  	},
+  	"inbounds": [
+  		{
+  			"listen": "0.0.0.0",
+  			"port": 443,
+  			"protocol": "VLESS",
+  			"settings": {
+  				"clients": [
+  					{
+  						"id": "domestic-uuid",
+  						"flow": "xtls-rprx-vision"
+  					}
+  				],
+  				"decryption": "none"
+  			},
+  			"streamSettings": {
+  				"network": "tcp",
+  				"security": "reality",
+  				"realitySettings": {
+  					"dest": "www.domestic-site.com:443",
+  					"serverNames": [
+  						"www.domestic-site.com",
+  						"domestic-site.com"
+  					],
+  					"privateKey": "domestic-private-key",
+  					"publicKey": "domestic-public-key",
+  					"shortIds": [
+  						"domestic-short-id"
+  					]
+  				}
+  			},
+  			"sniffing": {
+  				"enabled": true,
+  				"destOverride": ["http", "tls"]
+  			}
+  		}
+  	],
+  	"outbounds": [
+  		{
+  			"protocol": "freedom",
+  			"tag": "direct-out"
+  		}
+  	]
+}
