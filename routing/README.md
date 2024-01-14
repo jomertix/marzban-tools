@@ -1,0 +1,1 @@
+An example of a config that routes the specific traffic from a foreign server to a domestic one. Hides traffic from the censor. The user no longer needs to disable the vpn to access the internal site.
