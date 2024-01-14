@@ -51,6 +51,11 @@ To check if the file is correct just create a backup:
 ```
 sh /opt/marzban/marzban-backup.sh
 ```
+# Restore backup
+
+```
+docker compose exec -T mysql mysql -pPASSWORD -u root marzban < dump.sql
+```
 
 # Backup other files and directories
 
