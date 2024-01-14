@@ -1,0 +1,97 @@
+{
+    "log": {
+        "loglevel": "warning"
+    },
+    "inbounds": [
+        {
+            "tag": "VLESS TCP REALITY",
+            "listen": "0.0.0.0",
+            "port": 12000,
+            "protocol": "vless",
+            "settings": {
+                "clients": [],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "reality",
+                "realitySettings": {
+                    "show": false,
+                    "dest": "foreign-site.com:443",
+                    "xver": 0,
+                    "serverNames": [
+                        "www.foreign-site.com",
+                        "foreign.com"
+                    ],
+                    "privateKey": "foreign-private-key",
+                    "publicKey": "foreign-public-key",
+                    "shortIds": [
+                        "foreign-short-id"
+                    ]
+                }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            }
+        },
+    ],
+    "outbounds": [
+        {
+            "tag": "direct-out",
+            "protocol": "freedom"
+        },
+        {
+            "tag": "domestic-proxy",
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "domestic-server-ip",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "domestic-uuid",
+                                "encryption": "none",
+                                "flow": "xtls-rprx-vision"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "reality",
+                "realitySettings": {
+                    "fingerprint": "chrome",
+                    "serverName": "domestic-site.com",
+                    "publicKey": "domestic-public-key",
+                    "shortId": "domestic-short-id",
+                    "spiderX": ""
+                },
+                "mux": {
+                    "enabled": true,
+                    "concurrency": -1,
+                    "xudpConcurrency": 16,
+                    "xudpProxyUDP443": "reject"
+                }
+            }
+        }
+    ],
+    "routing": {
+        "domainStrategy": "IPIfNonMatch",
+        "domainMatcher": "hybrid",
+        "rules": [
+            {
+                "type": "field",
+                "domain": [
+                    "2ip.ru"
+                ],
+                "outboundTag": "domestic-proxy"
+            }
+        ]
+    }
+}
