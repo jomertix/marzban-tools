@@ -3,10 +3,16 @@ An example of a config that routes the specific traffic from a foreign server to
 
 
 Generate pair of public and private keys:
-```docker exec marzban-marzban-1 xray x25519```
+```
+docker exec marzban-marzban-1 xray x25519
+```
 
 Generate uuid:
-```uuidgen```
+```
+uuidgen
+```
 
 Generate short id:
-```openssl rand -hex 8```
+```
+openssl rand -hex 8
+```
