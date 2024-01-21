@@ -14,7 +14,7 @@ ERRORS_FILE="/var/lib/marzban/logs/error.log"
 # Sending files via Telegram
 sendFiles() {
         ip=$(hostname -I | awk '{ print $1 }')
-        caption="IP: $ip %0A Server: node-ru-1"
+        caption="IP: $ip. Server: server_name"
         for file in "$@"; do
                 curl -F chat_id="$CHAT_ID" -F caption="$caption" -F document=@$file https://api.telegram.org/bot$BOT_TOKEN/sendDocument
        	echo "\nFile $file is sent"
