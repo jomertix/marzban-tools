@@ -8,7 +8,7 @@ Script backups the Marzban data and other files that you want to be saved and se
 Connect to the server and upload the file:
 ```
 cd /opt/marzban/
-sudo wget https://raw.githubusercontent.com/jomertix/marzban-tools/master/backup/marzban-backup.sh
+sudo wget https://raw.githubusercontent.com/jomertix/marzban-tools/master/backup/marzban/marzban-backup.sh
 ```
 
 Open the file and edit it:
